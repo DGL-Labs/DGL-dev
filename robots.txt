@@ -1,0 +1,16 @@
+# dgl.dev
+#
+# Normal public crawling is allowed. Nothing here is a secret, and the site is
+# meant to be found.
+#
+# Draft pages are NOT disallowed on purpose. /work/vera-cloudai-os/ carries
+# <meta name="robots" content="noindex,follow"> and is filtered out of the
+# sitemap. Blocking it here would stop a crawler fetching the page, which means
+# it would never see the noindex - a disallowed URL can still be indexed from
+# links alone, with no snippet. Letting it be crawled is what makes the noindex
+# work.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://dgl.dev/sitemap-index.xml
