@@ -80,6 +80,59 @@ const EV = {"ctaStartProject":"cta_start_project","intakeStarted":"intake_starte
         status.textContent = msg;
       }
 
+      // ---- SUBMISSION ID -------------------------------------------------
+      //
+      // One UUID per attempt at ONE enquiry, resent unchanged on every retry.
+      // The endpoint uses it as an idempotency key: a repeated id resolves to
+      // the opportunity already created rather than making a second one.
+      //
+      // Without it, "that did not send" followed by a second click is
+      // indistinguishable from two separate enquiries, and the honest recovery
+      // path - retry - is the thing that creates the duplicate.
+      //
+      // Kept in sessionStorage so a retry survives a reload of this tab, and
+      // mirrored in memory because private-browsing modes throw on access
+      // rather than returning null. The in-memory copy alone still covers the
+      // realistic case: clicking send twice on one page.
+      var SUBMISSION_KEY = 'dgl.intake.submissionId';
+      var submissionId = null;
+
+      function uuidv4() {
+        try {
+          if (window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID();
+          var b = new Uint8Array(16);
+          window.crypto.getRandomValues(b);
+          b[6] = (b[6] & 0x0f) | 0x40;
+          b[8] = (b[8] & 0x3f) | 0x80;
+          var h = [];
+          for (var i = 0; i < 16; i++) h.push((b[i] + 0x100).toString(16).slice(1));
+          return h.slice(0, 4).join('') + '-' + h.slice(4, 6).join('') + '-'
+               + h.slice(6, 8).join('') + '-' + h.slice(8, 10).join('') + '-' + h.slice(10).join('');
+        } catch (e) {
+          return null;   // no crypto: send nothing rather than a weak id
+        }
+      }
+
+      function currentSubmissionId() {
+        if (submissionId) return submissionId;
+        try {
+          submissionId = window.sessionStorage.getItem(SUBMISSION_KEY);
+        } catch (e) { /* private mode - memory only */ }
+        if (!submissionId) {
+          submissionId = uuidv4();
+          try { window.sessionStorage.setItem(SUBMISSION_KEY, submissionId); } catch (e) {}
+        }
+        return submissionId;
+      }
+
+      // After a CONFIRMED store. The next enquiry from this tab is a different
+      // enquiry, and reusing the id would make the endpoint return the first
+      // one instead of recording the second.
+      function rotateSubmissionId() {
+        submissionId = null;
+        try { window.sessionStorage.removeItem(SUBMISSION_KEY); } catch (e) {}
+      }
+
       function collect() {
         var d = {};
         new FormData(form).forEach(function (v, k) { d[k] = String(v).trim(); });
@@ -144,6 +197,9 @@ const EV = {"ctaStartProject":"cta_start_project","intakeStarted":"intake_starte
         button.disabled = true;
         say('busy', 'Sending...');
         d.page = window.location.pathname;
+        d.elapsed = Math.round((Date.now() - loadedAt) / 1000);
+        var sid = currentSubmissionId();
+        if (sid) d.submissionId = sid;
 
         // text/plain avoids a CORS preflight against Apps Script, which does not
         // answer OPTIONS. Same constraint the ops dashboard hit.
@@ -158,6 +214,10 @@ const EV = {"ctaStartProject":"cta_start_project","intakeStarted":"intake_starte
             // row and returns its id. A 200 alone is not proof of anything.
             if (res && res.ok && res.id) {
               form.reset();
+              // Only now. Rotating before confirmation would mean a retry
+              // carried a NEW id and created a second opportunity - the exact
+              // duplicate this exists to prevent.
+              rotateSubmissionId();
               say('ok', 'Thank you - that reached us. We reply to everything, usually within one business day.');
               if (window.dglTrack) window.dglTrack(EV.intakeSubmitted);
             } else {
