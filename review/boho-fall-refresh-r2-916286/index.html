@@ -52,7 +52,10 @@ iframe{width:100%;height:880px;border:1px solid var(--line);border-radius:6px;ba
 @media (max-width:480px){.bar,.band,.wrap,.ftr{padding-inline:16px}.toc ol{columns:1}.opts{gap:14px}h1{font-size:28px}}
 html,body{overflow-x:hidden}
 a:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.who{display:grid;gap:6px;max-width:420px;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:14px 18px}.who label{font-weight:700}
+.who{display:grid;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:14px 18px}.who label{font-weight:700;display:block;margin-bottom:4px}
+.who-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.role{margin:0;font-size:14px;color:var(--mut)}.role.ok{color:var(--ok);font-weight:600}.role.warn{color:var(--warn)}
+input[type=email]{font:inherit;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:6px;padding:9px 11px;width:100%}input[readonly]{background:var(--bg-2)}
+code{font-size:13px;background:var(--bg-2);padding:1px 5px;border-radius:4px}
 input[type=text],textarea{font:inherit;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:6px;padding:9px 11px;width:100%}
 .decide{border:1px solid var(--line);border-radius:8px;background:var(--white);padding:12px 16px;margin:0;display:grid;gap:8px}
 .decide legend{font-weight:700;padding:0 4px}.opts{display:flex;flex-wrap:wrap;gap:20px}.opts label{display:flex;align-items:center;gap:7px;cursor:pointer;font-weight:600}
@@ -104,133 +107,135 @@ pre{white-space:pre-wrap;background:var(--white);border:1px solid var(--line);bo
 <li>Old versions are kept, so any email can be switched back in one step.</li></ul></div>
 </div></div>
 <nav class="toc" aria-label="Emails in this review"><h3>Emails in this review</h3><ol><li><a href="#e1">High Intent <span>Email #1</span></a></li><li><a href="#e2">High Intent <span>Email #2</span></a></li><li><a href="#e3">Customer Winback <span>Customer Winback: Email 1</span></a></li><li><a href="#e4">Customer Winback <span>Customer Winback: Email 2</span></a></li><li><a href="#e5">Welcome Series <span>Email #1</span></a></li><li><a href="#e6">Welcome Series <span>Email #2</span></a></li><li><a href="#e7">Welcome Series <span>Email #3</span></a></li><li><a href="#e8">Repeat Customer <span>Email #1</span></a></li><li><a href="#e9">Repeat Customer <span>Email #2</span></a></li><li><a href="#e10">Repeat Customer <span>Email #3</span></a></li><li><a href="#e11">Predictive Purchase <span>Email #1</span></a></li><li><a href="#e12">Predictive Purchase <span>Email #2</span></a></li><li><a href="#e13">Abandoned Checkout Reminder <span>Abandoned Cart: Email 1</span></a></li><li><a href="#e14">Abandoned Checkout Reminder <span>Abandoned Cart: Email 2</span></a></li><li><a href="#e15">Cross-Sell <span>Email #1</span></a></li><li><a href="#e16">Cross-Sell <span>Email #2</span></a></li><li><a href="#e17">Product Review + Cross-Sell <span>Cross-Sell Email (dynamic recs)</span></a></li><li><a href="#e18">First-Purchase Anniversary <span>Email #1</span></a></li><li><a href="#e19">Price Drop <span>Price Drop Email #1 (SIMPLE)</span></a></li><li><a href="#e20">New Customer <span>Email #1</span></a></li><li><a href="#e21">New Customer <span>Email #2</span></a></li></ol></nav>
-<div class="who"><label for="reviewer">Your name</label><input id="reviewer" type="text" autocomplete="name" placeholder="Name of the person approving"></div>
+<div class="who" id="who"><p class="role" id="role">Your decisions are recorded as feedback. Approvals count only when submitted from a private approver link.</p>
+<div class="who-f"><div><label for="reviewer">Your name</label><input id="reviewer" type="text" autocomplete="name" placeholder="Full name"></div>
+<div><label for="remail">Your email</label><input id="remail" type="email" autocomplete="email" placeholder="name@company.com"></div></div></div>
 <section class="email" id="e1">
 <header><h2>High Intent</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Boho Patchwork Pullover Sweater, Knit Loose Pullover Fashion Sweater, Casual Long Sleeve Shirt With Pocket, Long Sleeve Button Up Long Sleeve Shirt</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137428.html" title="Before: High Intent Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137428.html" title="After: High Intent Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137428" data-flow="High Intent" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e1" value="approved" id="d-e1-a"> Approve</label><label><input type="radio" name="d-e1" value="changes_requested" id="d-e1-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e1" value="approved" id="d-e1-a"> Approve</label><label><input type="radio" name="d-e1" value="changes_required" id="d-e1-c"> Changes required</label></div>
 <label class="nl" for="n-e1">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e1" rows="3"></textarea></fieldset></section><section class="email" id="e2">
 <header><h2>High Intent</h2><p class="msg">Email #2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Chic Open Shoulder Knit Sweater, Colorful Long Sleeve Boho Shirt, Bohemian Plaid Flannel Coat, Boho Knit Cardigan With Pockets</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137434.html" title="Before: High Intent Email #2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137434.html" title="After: High Intent Email #2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137434" data-flow="High Intent" data-msg="Email #2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e2" value="approved" id="d-e2-a"> Approve</label><label><input type="radio" name="d-e2" value="changes_requested" id="d-e2-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e2" value="approved" id="d-e2-a"> Approve</label><label><input type="radio" name="d-e2" value="changes_required" id="d-e2-c"> Changes required</label></div>
 <label class="nl" for="n-e2">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e2" rows="3"></textarea></fieldset></section><section class="email" id="e3">
 <header><h2>Customer Winback</h2><p class="msg">Customer Winback: Email 1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Long Sleeve Slim Fit Crop Top With Thumb Holes, Bohemian Oversized Casual Pullover Sweater, Boho Colorblock Lace Long Sleeve Tee, Long Sleeve Pullover Shirt</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112085766.html" title="Before: Customer Winback Customer Winback: Email 1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112085766.html" title="After: Customer Winback Customer Winback: Email 1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112085766" data-flow="Customer Winback" data-msg="Customer Winback: Email 1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e3" value="approved" id="d-e3-a"> Approve</label><label><input type="radio" name="d-e3" value="changes_requested" id="d-e3-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e3" value="approved" id="d-e3-a"> Approve</label><label><input type="radio" name="d-e3" value="changes_required" id="d-e3-c"> Changes required</label></div>
 <label class="nl" for="n-e3">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e3" rows="3"></textarea></fieldset></section><section class="email" id="e4">
 <header><h2>Customer Winback</h2><p class="msg">Customer Winback: Email 2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Sexy Off Shoulder Knit Pullover Sweater, Boho Denim Jacket, Boho Lace Sleeve Long Tee, Batwing Knitted Cardigan</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112085771.html" title="Before: Customer Winback Customer Winback: Email 2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112085771.html" title="After: Customer Winback Customer Winback: Email 2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112085771" data-flow="Customer Winback" data-msg="Customer Winback: Email 2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e4" value="approved" id="d-e4-a"> Approve</label><label><input type="radio" name="d-e4" value="changes_requested" id="d-e4-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e4" value="approved" id="d-e4-a"> Approve</label><label><input type="radio" name="d-e4" value="changes_required" id="d-e4-c"> Changes required</label></div>
 <label class="nl" for="n-e4">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e4" rows="3"></textarea></fieldset></section><section class="email" id="e5">
 <header><h2>Welcome Series</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Loose Fit Long Sleeve Knitted Cardigan, Bohemian Lace Blouse, Boho Lace Long Sleeve Blouse, Boho Cropped Hooded Denim Jacket</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112133380.html" title="Before: Welcome Series Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112133380.html" title="After: Welcome Series Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112133380" data-flow="Welcome Series" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e5" value="approved" id="d-e5-a"> Approve</label><label><input type="radio" name="d-e5" value="changes_requested" id="d-e5-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e5" value="approved" id="d-e5-a"> Approve</label><label><input type="radio" name="d-e5" value="changes_required" id="d-e5-c"> Changes required</label></div>
 <label class="nl" for="n-e5">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e5" rows="3"></textarea></fieldset></section><section class="email" id="e6">
 <header><h2>Welcome Series</h2><p class="msg">Email #2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Bohemian Long Sleeve Top, Boho Loose Fit Pullover Sweater, Slip On Fur Shoes, Vintage Bootcut Ripped Jeans</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112133382.html" title="Before: Welcome Series Email #2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112133382.html" title="After: Welcome Series Email #2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112133382" data-flow="Welcome Series" data-msg="Email #2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e6" value="approved" id="d-e6-a"> Approve</label><label><input type="radio" name="d-e6" value="changes_requested" id="d-e6-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e6" value="approved" id="d-e6-a"> Approve</label><label><input type="radio" name="d-e6" value="changes_required" id="d-e6-c"> Changes required</label></div>
 <label class="nl" for="n-e6">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e6" rows="3"></textarea></fieldset></section><section class="email" id="e7">
 <header><h2>Welcome Series</h2><p class="msg">Email #3</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li><li>Swim links &#8594; Fall collection</li><li>Copy: &#8220;Sweater season is here&#8221;</li><li>Button: &#8220;Shop Fall With 10% Off&#8221;</li><li>&#8220;Browse Swimwear&#8221; &#8594; &#8220;Shop Fall&#8221;</li></ul><p class="prods"><span>New products:</span> Boho Off Shoulder Knit V Neck Sweater, Boho Lantern Sleeve Knit Top, Boho Vintage White Long Sleeve Blouse, Vintage Twist Knit Sweater</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112133384.html" title="Before: Welcome Series Email #3" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112133384.html" title="After: Welcome Series Email #3" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112133384" data-flow="Welcome Series" data-msg="Email #3"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e7" value="approved" id="d-e7-a"> Approve</label><label><input type="radio" name="d-e7" value="changes_requested" id="d-e7-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e7" value="approved" id="d-e7-a"> Approve</label><label><input type="radio" name="d-e7" value="changes_required" id="d-e7-c"> Changes required</label></div>
 <label class="nl" for="n-e7">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e7" rows="3"></textarea></fieldset></section><section class="email" id="e8">
 <header><h2>Repeat Customer</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Boho Chunky Knit Turtleneck Sweater, Boho Inspired Knit Pullover Sweater, Sequined Platform Slip On Flats, Casual Button Up Long Sleeve Shirt</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112084327.html" title="Before: Repeat Customer Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112084327.html" title="After: Repeat Customer Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112084327" data-flow="Repeat Customer" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e8" value="approved" id="d-e8-a"> Approve</label><label><input type="radio" name="d-e8" value="changes_requested" id="d-e8-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e8" value="approved" id="d-e8-a"> Approve</label><label><input type="radio" name="d-e8" value="changes_required" id="d-e8-c"> Changes required</label></div>
 <label class="nl" for="n-e8">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e8" rows="3"></textarea></fieldset></section><section class="email" id="e9">
 <header><h2>Repeat Customer</h2><p class="msg">Email #2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Distressed Frayed Boho Jacket, Sexy Off Shoulder Flare Sleeve Boho Top, Boho Wide Leg Denim Hippie Pants, Bohemian Long Sleeve Leopard Print Denim Jacket</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112084331.html" title="Before: Repeat Customer Email #2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112084331.html" title="After: Repeat Customer Email #2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112084331" data-flow="Repeat Customer" data-msg="Email #2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e9" value="approved" id="d-e9-a"> Approve</label><label><input type="radio" name="d-e9" value="changes_requested" id="d-e9-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e9" value="approved" id="d-e9-a"> Approve</label><label><input type="radio" name="d-e9" value="changes_required" id="d-e9-c"> Changes required</label></div>
 <label class="nl" for="n-e9">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e9" rows="3"></textarea></fieldset></section><section class="email" id="e10">
 <header><h2>Repeat Customer</h2><p class="msg">Email #3</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li><li>Swim links &#8594; Fall collection</li><li>Button: &#8220;Shop Fall With 10% Off&#8221;</li><li>&#8220;Browse Swimwear&#8221; &#8594; &#8220;Shop Fall&#8221;</li></ul><p class="prods"><span>New products:</span> Long Sleeve Crop Top, Ankle Boots With Buckle 2 Colors, Bohemian Pullover Knit Sweater, Fashion Boots 3 Colors</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112084333.html" title="Before: Repeat Customer Email #3" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112084333.html" title="After: Repeat Customer Email #3" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112084333" data-flow="Repeat Customer" data-msg="Email #3"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e10" value="approved" id="d-e10-a"> Approve</label><label><input type="radio" name="d-e10" value="changes_requested" id="d-e10-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e10" value="approved" id="d-e10-a"> Approve</label><label><input type="radio" name="d-e10" value="changes_required" id="d-e10-c"> Changes required</label></div>
 <label class="nl" for="n-e10">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e10" rows="3"></textarea></fieldset></section><section class="email" id="e11">
 <header><h2>Predictive Purchase</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Twist Knit Sweater With Pockets, Boho Wide Leg High Waist Jeans, Ripped Mid Waist Skinny Jeans, Black Boho Lace Maxi Dress</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137346.html" title="Before: Predictive Purchase Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137346.html" title="After: Predictive Purchase Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137346" data-flow="Predictive Purchase" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e11" value="approved" id="d-e11-a"> Approve</label><label><input type="radio" name="d-e11" value="changes_requested" id="d-e11-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e11" value="approved" id="d-e11-a"> Approve</label><label><input type="radio" name="d-e11" value="changes_required" id="d-e11-c"> Changes required</label></div>
 <label class="nl" for="n-e11">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e11" rows="3"></textarea></fieldset></section><section class="email" id="e12">
 <header><h2>Predictive Purchase</h2><p class="msg">Email #2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Boho Floral Knit Pullover Sweater, Boho High Waist Denim Maxi Skirt, Heart Patchwork Knit Sweater, Bohemian Style Denim Maxi Skirt</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137357.html" title="Before: Predictive Purchase Email #2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137357.html" title="After: Predictive Purchase Email #2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137357" data-flow="Predictive Purchase" data-msg="Email #2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e12" value="approved" id="d-e12-a"> Approve</label><label><input type="radio" name="d-e12" value="changes_requested" id="d-e12-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e12" value="approved" id="d-e12-a"> Approve</label><label><input type="radio" name="d-e12" value="changes_required" id="d-e12-c"> Changes required</label></div>
 <label class="nl" for="n-e12">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e12" rows="3"></textarea></fieldset></section><section class="email" id="e13">
 <header><h2>Abandoned Checkout Reminder</h2><p class="msg">Abandoned Cart: Email 1</p><ul class="chips"><li>Products already fall</li><li>Menu: SWIM &#8594; FALL</li></ul></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112085587.html" title="Before: Abandoned Checkout Reminder Abandoned Cart: Email 1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112085587.html" title="After: Abandoned Checkout Reminder Abandoned Cart: Email 1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112085587" data-flow="Abandoned Checkout Reminder" data-msg="Abandoned Cart: Email 1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e13" value="approved" id="d-e13-a"> Approve</label><label><input type="radio" name="d-e13" value="changes_requested" id="d-e13-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e13" value="approved" id="d-e13-a"> Approve</label><label><input type="radio" name="d-e13" value="changes_required" id="d-e13-c"> Changes required</label></div>
 <label class="nl" for="n-e13">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e13" rows="3"></textarea></fieldset></section><section class="email" id="e14">
 <header><h2>Abandoned Checkout Reminder</h2><p class="msg">Abandoned Cart: Email 2</p><ul class="chips"><li>Products already fall</li><li>Menu: SWIM &#8594; FALL</li></ul></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112085590.html" title="Before: Abandoned Checkout Reminder Abandoned Cart: Email 2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112085590.html" title="After: Abandoned Checkout Reminder Abandoned Cart: Email 2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112085590" data-flow="Abandoned Checkout Reminder" data-msg="Abandoned Cart: Email 2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e14" value="approved" id="d-e14-a"> Approve</label><label><input type="radio" name="d-e14" value="changes_requested" id="d-e14-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e14" value="approved" id="d-e14-a"> Approve</label><label><input type="radio" name="d-e14" value="changes_required" id="d-e14-c"> Changes required</label></div>
 <label class="nl" for="n-e14">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e14" rows="3"></textarea></fieldset></section><section class="email" id="e15">
 <header><h2>Cross-Sell</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Slip On Fur Shoes, Sequined Platform Slip On Flats, Knit Beanie 1, Black Leather Choker Necklace</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137389.html" title="Before: Cross-Sell Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137389.html" title="After: Cross-Sell Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137389" data-flow="Cross-Sell" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e15" value="approved" id="d-e15-a"> Approve</label><label><input type="radio" name="d-e15" value="changes_requested" id="d-e15-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e15" value="approved" id="d-e15-a"> Approve</label><label><input type="radio" name="d-e15" value="changes_required" id="d-e15-c"> Changes required</label></div>
 <label class="nl" for="n-e15">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e15" rows="3"></textarea></fieldset></section><section class="email" id="e16">
 <header><h2>Cross-Sell</h2><p class="msg">Email #2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Ankle Boots With Buckle 2 Colors, Fashion Boots 3 Colors, Long Knit Leg Warmers, Boho Layered Rhinestone Pendant Necklace</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137397.html" title="Before: Cross-Sell Email #2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137397.html" title="After: Cross-Sell Email #2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137397" data-flow="Cross-Sell" data-msg="Email #2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e16" value="approved" id="d-e16-a"> Approve</label><label><input type="radio" name="d-e16" value="changes_requested" id="d-e16-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e16" value="approved" id="d-e16-a"> Approve</label><label><input type="radio" name="d-e16" value="changes_required" id="d-e16-c"> Changes required</label></div>
 <label class="nl" for="n-e16">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e16" rows="3"></textarea></fieldset></section><section class="email" id="e17">
 <header><h2>Product Review + Cross-Sell</h2><p class="msg">Cross-Sell Email (dynamic recs)</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Boho Tassel Fringe Faux Suede Boots, Faux Fur Winter Boots, Thigh High Stocking Socks 3 Colors, Heart Necklace</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112532996.html" title="Before: Product Review + Cross-Sell Cross-Sell Email (dynamic recs)" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112532996.html" title="After: Product Review + Cross-Sell Cross-Sell Email (dynamic recs)" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112532996" data-flow="Product Review + Cross-Sell" data-msg="Cross-Sell Email (dynamic recs)"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e17" value="approved" id="d-e17-a"> Approve</label><label><input type="radio" name="d-e17" value="changes_requested" id="d-e17-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e17" value="approved" id="d-e17-a"> Approve</label><label><input type="radio" name="d-e17" value="changes_required" id="d-e17-c"> Changes required</label></div>
 <label class="nl" for="n-e17">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e17" rows="3"></textarea></fieldset></section><section class="email" id="e18">
 <header><h2>First-Purchase Anniversary</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Heart Patchwork Knit Sweater, Bohemian Style Denim Maxi Skirt, Boho Turtleneck Knit Sweater Dress, Ribbed Long Sleeve Casual Crop Top Shirt</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112140354.html" title="Before: First-Purchase Anniversary Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112140354.html" title="After: First-Purchase Anniversary Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112140354" data-flow="First-Purchase Anniversary" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e18" value="approved" id="d-e18-a"> Approve</label><label><input type="radio" name="d-e18" value="changes_requested" id="d-e18-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e18" value="approved" id="d-e18-a"> Approve</label><label><input type="radio" name="d-e18" value="changes_required" id="d-e18-c"> Changes required</label></div>
 <label class="nl" for="n-e18">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e18" rows="3"></textarea></fieldset></section><section class="email" id="e19">
 <header><h2>Price Drop</h2><p class="msg">Price Drop Email #1 (SIMPLE)</p><ul class="chips"><li>Fall products</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Sheer Sleeve Denim Button Up Blouse, Boho Striped Knit Sweater, Boho Striped Slash Neck Lantern Sleeve Sweater, Boho Tassel Fringe Faux Suede Boots</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-98859459.html" title="Before: Price Drop Price Drop Email #1 (SIMPLE)" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-98859459.html" title="After: Price Drop Price Drop Email #1 (SIMPLE)" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="98859459" data-flow="Price Drop" data-msg="Price Drop Email #1 (SIMPLE)"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e19" value="approved" id="d-e19-a"> Approve</label><label><input type="radio" name="d-e19" value="changes_requested" id="d-e19-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e19" value="approved" id="d-e19-a"> Approve</label><label><input type="radio" name="d-e19" value="changes_required" id="d-e19-c"> Changes required</label></div>
 <label class="nl" for="n-e19">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e19" rows="3"></textarea></fieldset></section><section class="email" id="e20">
 <header><h2>New Customer</h2><p class="msg">Email #1</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Rainbow Striped Bohemian Sweater, Irregular Vintage Fringe Sweater, Boho Striped Casual Pullover Knit Sweater</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137308.html" title="Before: New Customer Email #1" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137308.html" title="After: New Customer Email #1" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137308" data-flow="New Customer" data-msg="Email #1"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e20" value="approved" id="d-e20-a"> Approve</label><label><input type="radio" name="d-e20" value="changes_requested" id="d-e20-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e20" value="approved" id="d-e20-a"> Approve</label><label><input type="radio" name="d-e20" value="changes_required" id="d-e20-c"> Changes required</label></div>
 <label class="nl" for="n-e20">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e20" rows="3"></textarea></fieldset></section><section class="email" id="e21">
 <header><h2>New Customer</h2><p class="msg">Email #2</p><ul class="chips"><li>Fall products</li><li>Fall top image</li><li>Menu: SWIM &#8594; FALL</li></ul><p class="prods"><span>New products:</span> Faux Fur Winter Boots, High Waist Wide Leg Loose Denim Jeans, Stretch Mid Waist Skinny Jeans, Mid Calf Thick Fur Boots 4 Colors</p></header>
 <div class="pair"><figure><figcaption>Before (live now)</figcaption><div class="frame"><iframe src="before-112137317.html" title="Before: New Customer Email #2" loading="lazy"></iframe></div></figure>
 <figure><figcaption class="after">After (fall)</figcaption><div class="frame"><iframe src="render-112137317.html" title="After: New Customer Email #2" loading="lazy"></iframe></div></figure></div>
 <fieldset class="decide" data-id="112137317" data-flow="New Customer" data-msg="Email #2"><legend>Your decision</legend>
-<div class="opts"><label><input type="radio" name="d-e21" value="approved" id="d-e21-a"> Approve</label><label><input type="radio" name="d-e21" value="changes_requested" id="d-e21-c"> Request changes</label></div>
+<div class="opts"><label><input type="radio" name="d-e21" value="approved" id="d-e21-a"> Approve</label><label><input type="radio" name="d-e21" value="changes_required" id="d-e21-c"> Changes required</label></div>
 <label class="nl" for="n-e21">Notes (what to change, or anything to keep in mind)</label><textarea id="n-e21" rows="3"></textarea></fieldset></section>
 <section class="submit" aria-live="polite"><h2>Send your review</h2><p id="tally">No decisions yet.</p>
 <button id="send" type="button">Submit review</button><p id="status" class="status"></p><pre id="fallback" hidden></pre></section>
@@ -238,8 +243,10 @@ pre{white-space:pre-wrap;background:var(--white);border:1px solid var(--line);bo
 <footer class="ftr"><div class="in"><picture><source srcset="/img/dgl-wordmark-light.webp" type="image/webp"><img src="/img/dgl-wordmark-light.png" width="480" height="187" alt="DGL.dev"></picture><span>Prepared by DGL.dev for Boho Beach Hut &middot; Digital Galactica Labs</span></div></footer>
 <script>
 var REVIEW_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyUqUZUEFzOFlfwFUqHdxMEP__zDI5BMhoiGUQ-O07We5qCGvtyhSwZAlptv7v7Ij9flQ/exec';  // DGL review Apps Script /exec URL (dgl-website docs/review-endpoint/Code.gs). Empty = not wired yet: email fallback, and the page says so.
-var REVIEW = 'Boho fall flow refresh 2026-10-03 (round 2)';
+var REVIEW = 'boho-fall-refresh-2026-10-03';  // review id (same across rounds)
+var VERSION = 'round 2';
 var KEY = 'dgl-review-boho-fall-2026-10-03-r2';
+var APPROVER = (location.search.match(/[?&]r=([A-Za-z0-9_-]{6,80})/) || [])[1] || '';
 var sets = Array.prototype.slice.call(document.querySelectorAll('fieldset.decide'));
 var EMAIL_W = 660, EMAIL_H = 880;  // previews are 600px emails; fit them to the column instead of scrolling sideways on phones
 function fit() {
@@ -254,36 +261,45 @@ function fit() {
 }
 window.addEventListener('resize', fit); fit();
 function collect() { return sets.map(function (f) { var c = f.querySelector('input[type=radio]:checked'); return { id: f.dataset.id, flow: f.dataset.flow, message: f.dataset.msg, decision: c ? c.value : '', notes: f.querySelector('textarea').value.trim() }; }); }
+var nameEl = document.getElementById('reviewer'), mailEl = document.getElementById('remail'), roleEl = document.getElementById('role');
 function tally() {
-  var it = collect(), a = it.filter(function (x) { return x.decision === 'approved'; }).length, c = it.filter(function (x) { return x.decision === 'changes_requested'; }).length;
-  document.getElementById('tally').textContent = a + ' approved, ' + c + ' changes requested, ' + (it.length - a - c) + ' not decided yet.';
-  try { localStorage.setItem(KEY, JSON.stringify({ reviewer: document.getElementById('reviewer').value, items: it })); } catch (e) {}
+  var it = collect(), a = it.filter(function (x) { return x.decision === 'approved'; }).length, c = it.filter(function (x) { return x.decision === 'changes_required'; }).length;
+  document.getElementById('tally').textContent = a + ' approved, ' + c + ' changes required, ' + (it.length - a - c) + ' not decided yet.';
+  try { localStorage.setItem(KEY, JSON.stringify({ reviewer: nameEl.value, email: mailEl.value, items: it })); } catch (e) {}
 }
 try {
   var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
-  if (saved) { document.getElementById('reviewer').value = saved.reviewer || ''; saved.items.forEach(function (x, i) { var f = sets[i]; if (!f || f.dataset.id !== x.id) return; if (x.decision) { var r = f.querySelector('input[value=' + x.decision + ']'); if (r) r.checked = true; } f.querySelector('textarea').value = x.notes || ''; }); }
+  if (saved) { nameEl.value = saved.reviewer || ''; mailEl.value = saved.email || ''; saved.items.forEach(function (x, i) { var f = sets[i]; if (!f || f.dataset.id !== x.id) return; var dec = x.decision === 'changes_requested' ? 'changes_required' : x.decision; if (dec) { var r = f.querySelector('input[value=' + dec + ']'); if (r) r.checked = true; } f.querySelector('textarea').value = x.notes || ''; }); }
 } catch (e) {}
+if (APPROVER && REVIEW_ENDPOINT) {
+  fetch(REVIEW_ENDPOINT + '?action=whoami&r=' + encodeURIComponent(APPROVER)).then(function (r) { return r.json(); }).then(function (j) {
+    if (j && j.approver) { nameEl.value = j.name; mailEl.value = j.email; nameEl.readOnly = mailEl.readOnly = true; roleEl.textContent = 'You are reviewing as an approver: ' + j.name + '. Your approvals are recorded as approval evidence for the release decision.'; roleEl.className = 'role ok'; }
+    else { roleEl.textContent = 'This approver link was not recognised, so your decisions will be recorded as feedback. Ask for a new approver link.'; roleEl.className = 'role warn'; }
+  }).catch(function () {});
+}
 document.addEventListener('input', tally); document.addEventListener('change', tally); tally();
-function asText(p) { return 'Review: ' + REVIEW + '\nReviewer: ' + p.reviewer + '\n\n' + p.items.map(function (x) { return '- ' + x.flow + ' / ' + x.message + ': ' + (x.decision === 'approved' ? 'APPROVED' : 'CHANGES') + (x.notes ? '\n  ' + x.notes : ''); }).join('\n'); }
+function asText(p) { return 'Review: ' + p.review + ' (' + p.version + ')\nReviewer: ' + p.reviewer + ' <' + p.email + '>\n\n' + p.items.map(function (x) { return '- ' + x.flow + ' / ' + x.message + ': ' + (x.decision === 'approved' ? 'APPROVED' : 'CHANGES REQUIRED') + (x.notes ? '\n  ' + x.notes : ''); }).join('\n'); }
 function fallback(p, why) {
   var st = document.getElementById('status'), fb = document.getElementById('fallback'); fb.hidden = false; fb.textContent = asText(p);
-  st.innerHTML = why + ' Your answers are still here. Copy the text below and email it to <b>Taylor@DGL.dev</b>, or <a href="mailto:Taylor@DGL.dev?subject=' + encodeURIComponent('Review: ' + REVIEW) + '&body=' + encodeURIComponent(asText(p)) + '">open it in your email app</a>.';
+  st.innerHTML = why + ' Your answers are still here. Copy the text below and email it to <b>Taylor@DGL.dev</b>, or <a href="mailto:Taylor@DGL.dev?subject=' + encodeURIComponent('Review: ' + p.review + ' ' + p.version) + '&body=' + encodeURIComponent(asText(p)) + '">open it in your email app</a>.';
   st.className = 'status warn';
 }
 document.getElementById('send').addEventListener('click', function () {
-  var st = document.getElementById('status'), btn = this, items = collect().filter(function (x) { return x.decision; }), reviewer = document.getElementById('reviewer').value.trim();
-  if (!reviewer) { st.textContent = 'Add your name at the top so we know who approved.'; st.className = 'status warn'; document.getElementById('reviewer').focus(); return; }
-  if (!items.length) { st.textContent = 'Choose Approve or Request changes on at least one email.'; st.className = 'status warn'; return; }
-  var missing = items.filter(function (x) { return x.decision === 'changes_requested' && !x.notes; });
-  if (missing.length) { st.textContent = 'Add a note to each email where you requested changes (' + missing.length + ' missing), so we know what to change.'; st.className = 'status warn'; return; }
-  var p = { review: REVIEW, reviewer: reviewer, page: location.href, items: items };
+  var st = document.getElementById('status'), btn = this, items = collect().filter(function (x) { return x.decision; }), reviewer = nameEl.value.trim(), email = mailEl.value.trim();
+  if (!reviewer || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { st.textContent = 'Add your name and email at the top so we know who reviewed.'; st.className = 'status warn'; (reviewer ? mailEl : nameEl).focus(); return; }
+  if (!items.length) { st.textContent = 'Choose Approve or Changes required on at least one email.'; st.className = 'status warn'; return; }
+  var missing = items.filter(function (x) { return x.decision === 'changes_required' && !x.notes; });
+  if (missing.length) { st.textContent = 'Add a note to each email marked Changes required (' + missing.length + ' missing), so we know what to change.'; st.className = 'status warn'; return; }
+  var p = { review: REVIEW, version: VERSION, reviewer: reviewer, email: email, approver: APPROVER, page: location.origin + location.pathname, items: items };
   if (!REVIEW_ENDPOINT) { fallback(p, 'Online submit is not connected yet.'); return; }
   btn.disabled = true; st.textContent = 'Sending...'; st.className = 'status';
   fetch(REVIEW_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(p) })
     .then(function (r) { return r.json(); })
     .then(function (j) {
-      if (j && j.ok) { st.textContent = 'Sent. ' + items.length + ' decision' + (items.length > 1 ? 's' : '') + ' recorded. Thank you.'; st.className = 'status ok'; try { localStorage.removeItem(KEY); } catch (e) {} }
-      else fallback(p, 'Your review was not saved (' + ((j && j.error) || 'unknown error') + ').');
+      if (j && j.ok) {
+        st.innerHTML = 'Recorded. ' + j.count + ' decision' + (j.count > 1 ? 's' : '') + ' saved ' + (j.authority === 'approver' ? 'as <b>approval evidence</b>' : 'as <b>feedback</b>') + '. Submission ID: <code>' + j.submission + '</code>. Thank you. Nothing has been changed in the live emails; the release decision comes next.';
+        st.className = 'status ok'; try { localStorage.removeItem(KEY); } catch (e) {}
+      } else fallback(p, 'Your review was not saved (' + ((j && j.error) || 'unknown error') + ').');
     })
     .catch(function () { fallback(p, 'Your review could not be sent (network error).'); })
     .then(function () { btn.disabled = false; });
